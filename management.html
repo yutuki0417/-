@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>運営</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <img src="images/ratti.png" alt="" id="cursorImage">
+
+    <header class="c-header c-hamburger-menu">
+        <!-- 追記 クラスを追記 -->
+        <a href="#" class="c-header__logo">運営</a>
+        <input type="checkbox" name="hamburger" id="hamburger"
+            class="c-hamburger-menu__input" /><!-- 追記 idはlabelのforと同じにする -->
+        <label for="hamburger" class="c-hamburger-menu__bg"></label><!-- 追記 ハンバーガーメニューを開いた時の背景 -->
+        <ul class="c-header__list c-hamburger-menu__list">
+            <!-- 追記 クラスを追記 -->
+            <li class="c-header__list-item">
+                <a href="index.html" class="c-header__list-link">ホーム</a>
+            </li>
+            <li class="c-header__list-item">
+                <a href="detail.html" class="c-header__list-link">詳細</a>
+            </li>
+            <li class="c-header__list-item">
+                <a href="management.html" class="c-header__list-link">運営</a>
+            </li>
+            <li class="c-header__list-item">
+                <a href="goods.html" class="c-header__list-link">グッズ</a>
+            </li>
+
+        </ul>
+        <label for="hamburger" class="c-hamburger-menu__button"><!-- 追記 ハンバーガーメニューのボタン -->
+            <span class="c-hamburger-menu__button-mark"></span>
+            <span class="c-hamburger-menu__button-mark"></span>
+            <span class="c-hamburger-menu__button-mark"></span>
+        </label>
+    </header>
+
+    <div class="background-decoration">
+        <svg width="100%" height="100%">
+            <circle cx="10%" cy="20%" r="200" fill="#3b5cff" opacity="0.05" />
+            <circle cx="80%" cy="10%" r="150" fill="#3b5cff" opacity="0.07" />
+            <circle cx="90%" cy="70%" r="250" fill="#3b5cff" opacity="0.04" />
+            <circle cx="20%" cy="80%" r="180" fill="#3b5cff" opacity="0.06" />
+        </svg>
+    </div>
+
+    <div class="text-detail">
+        <h2>らっだぁ運営メンバー</h2>
+    </div>
+
+    <div class="member-list">
+        <div class="member-card member-card--yellow">
+            <div class="member-card__info">
+                <h3>金豚きょー</h3>
+                <p>煙草を吸う自称JK</p>
+            </div>
+            <img src="images/body.png" alt="メンバー名1" class="member-card__img">
+        </div>
+        <div class="member-card member-card--green">
+            <div class="member-card__info">
+                <h3>みどりくん</h3>
+                <p>らっだぁ運営では最年少</p>
+            </div>
+            <img src="images/ダウンロード (2).png" alt="メンバー名2" class="member-card__img">
+        </div>
+        <div class="member-card member-card--red">
+            <div class="member-card__info">
+                <h3>レウクラウド</h3>
+                <p>不憫いじられキャラ</p>
+            </div>
+            <img src="images/ダウンロード (1).png" alt="メンバー名3" class="member-card__img">
+        </div>
+        <div class="member-card member-card--purple">
+            <div class="member-card__info">
+                <h3>コンタミ</h3>
+                <p>北海道の海底に住むイカ</p>
+            </div>
+            <img src="images/ダウンロード.png" alt="メンバー名4" class="member-card__img">
+        </div>
+    </div>
+
+    <footer class="footer">
+        <a href="https://www.youtube.com/@radaooo" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a href="https://x.com/radaokun" target="_blank">
+            <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+        <a href="https://www.instagram.com/radaokun/" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://www.twitch.tv/rader?lang=ja" target="_blank">
+            <i class="fa-brands fa-twitch"></i>
+        </a>
+    </footer>
+    <script src="javascrpt/moveSliber.js"></script>
+
+    <script>
+        const cards = document.querySelectorAll('.member-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(cards).indexOf(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 250); /* 1枚ごとに0.25秒ずらす */
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => observer.observe(card));
+    </script>
+</body>
+
+</html>
